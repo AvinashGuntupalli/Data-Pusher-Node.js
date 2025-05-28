@@ -6,13 +6,13 @@ README.md for Data Pusher Project
 
 \---
 
-##  Swagger UI Documentation
+## Swagger UI Documentation
 
 You can now run the server using \*\*Express\*\* and view Swagger UI documentation at:
 
 \[http://localhost:3013/docs/#/\](http://localhost:3013/docs/#/)
 
-\### How to use:
+## How to use:
 
 1\. Install dependencies:
 
