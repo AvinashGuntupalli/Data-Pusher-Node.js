@@ -1,6 +1,6 @@
 README.md for Data Pusher Project
 
-\# Data Pusher API
+## Data Pusher API
 
 \## Overview Data Pusher is a simple HTTP server built with raw Node.js and SQLite to manage accounts, destinations (webhooks), and forward incoming JSON data to configured destinations securely. ---
 
