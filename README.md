@@ -111,7 +111,7 @@ app_secret_token: <token>
 
 - Body: Any valid JSON payload.
 
-##Authentication
+## Authentication
 For the /data endpoint, requests must include a valid app_secret_token in the header matching the account's token.
 
 ## Testing the API
