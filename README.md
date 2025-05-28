@@ -144,17 +144,17 @@ For the /data endpoint, requests must include a valid app_secret_token in the he
 ## Test Plan
 
 - Test Case Expected Result
-- Create account with valid data 201 Created, returns account with token
-- Create account with invalid data 400 Bad Request, error message
-- Get existing account 200 OK, returns account data
-- Get non-existing account 404 Not Found
-- Update account with valid data 200 OK, updated account
-- Delete existing account 200 OK, account removed
-- Create destination for account 201 Created, returns destination
-- Get destinations list for account 200 OK, array of destinations
-- Forward data with valid token 200 OK, forwards to all destinations
+- Create account with valid data 201 Created --> returns account with token
+- Create account with invalid data 400 Bad Request -->  error message
+- Get existing account 200 OK, --> returns account data
+- Get non-existing account 404 --> Not Found
+- Update account with valid data 200 OK, --> updated account
+- Delete existing account 200 OK -->  account removed
+- Create destination for account 201 Created -->  returns destination
+- Get destinations list for account 200 OK --> array of destinations
+- Forward data with valid token 200 OK --> forwards to all destinations
 - Forward data with invalid token 401 Unauthorized
-- Forward data with no destinations 200 OK, but message indicates no destinations
+- Forward data with no destinations 200 OK --> but message indicates no destinations
 - Forward data with invalid JSON body 400 Bad Request
 
 ## SQLite Viewer Options  
