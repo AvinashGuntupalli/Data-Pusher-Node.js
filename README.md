@@ -71,7 +71,7 @@ bash
 
 - Initialize the database (tables are auto-created in db.js on first run)
 - Start the server - node server.js
-- Server runs at http://localhost:3000 (configurable via PORT env variable)
+- Server runs at http://localhost:3013/docs (configurable via PORT env variable)
 
 ## API Endpoints
 
