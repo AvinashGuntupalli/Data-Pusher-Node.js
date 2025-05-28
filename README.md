@@ -75,7 +75,7 @@ bash
 
 ## API Endpoints
 
-\*Accounts
+## Accounts
 
 - POST /accounts - Create a new account
 
@@ -89,7 +89,7 @@ Body: { "name": "New Name" }
 
 - DELETE /accounts/{account_id} - Delete account
 
-\*Destinations
+## Destinations
 
 - POST /accounts/{account_id}/destinations -Create destination
 
@@ -107,17 +107,16 @@ Body:
 
 - PUT /accounts/{account_id}/destinations/{destination_id}
 
-\*Update destination
+## Update destination
 
 - DELETE /accounts/{account_id}/destinations/{destination_id} - Delete destination
 
-\*Data Forwarding
+## Data Forwarding
 
 - POST /accounts/{account_id}/data -Forward JSON data to all destinations for the account
   Headers:
 
 makefile
-
 Content-Type: application/json
 app_secret_token: <token>
 
@@ -169,17 +168,16 @@ For the /data endpoint, requests must include a valid app_secret_token in the he
 - Forward data with no destinations 200 OK, but message indicates no destinations
 - Forward data with invalid JSON body 400 Bad Request
 
-\## SQLite Viewer Options  
-\* Option 1: CLI Access via Terminal
+## SQLite Viewer Options  
 
+\* Option 1: CLI Access via Terminal
 - Use sqlite3:
 - sqlite3 mydb.sqlit
 - View tables: .tables
 - Query data: SELECT \* FROM accounts;
 - Exit with .quit
 
-\*##Option 2: Use VS Code Extension
-
+## Option 2: Use VS Code Extension
 - If you use Visual Studio Code, follow these steps:
 - Open VS Code
 - Go to Extensions (Cmd + Shift + X)
