@@ -10,31 +10,20 @@ README.md for Data Pusher Project
 
 You can now run the server using \*\*Express\*\* and view Swagger UI documentation at:
 
-\[http://localhost:3013/docs/#/\](http://localhost:3013/docs/#/)
+  http://localhost:3013/docs/#/
 
 ## How to use:
 
 1\. Install dependencies:
 
 \`\`\`bash
+- npm install express swagger-ui-express
+- Update your server to use Express and serve Swagger UI:
+- Use the swagger-ui-express package to serve the swagger.json file.
+- Swagger UI will be accessible at /docs.
+- Start your server -node server.js
+- Open the browser and navigate to: http://localhost:3013/docs/#/ 
 
-npm install express swagger-ui-express
-
-Update your server to use Express and serve Swagger UI:
-
-Use the swagger-ui-express package to serve the swagger.json file.
-
-Swagger UI will be accessible at /docs.
-
-Start your server:
-
-node server.js
-
-Open the browser and navigate to:
-
-bash
-
-[http://localhost:3013/docs](http://localhost:3013/docs)
 
 ## Features
 
