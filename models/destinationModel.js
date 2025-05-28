@@ -57,7 +57,7 @@ function updateDestination(destination_id, { url, http_method, headers }) {
   });
 }
 
-// --- Missing deleteDestination implementation ---
+// deleteDestination
 function deleteDestination(destination_id) {
   return new Promise((resolve, reject) => {
     const sql = "DELETE FROM destinations WHERE destination_id = ?";

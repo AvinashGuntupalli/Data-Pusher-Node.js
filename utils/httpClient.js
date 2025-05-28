@@ -1,31 +1,3 @@
-// import axios from "axios";
-
-// async function sendDataToDestination(destination, data) {
-//   const { url, http_method, headers } = destination;
-//   const parsedHeaders = JSON.parse(headers);
-
-//   try {
-//     if (http_method.toUpperCase() === "GET") {
-//       // Send data as query params
-//       await axios.get(url, { params: data, headers: parsedHeaders });
-//     } else if (["POST", "PUT"].includes(http_method.toUpperCase())) {
-//       // Send data as JSON body
-//       await axios({
-//         method: http_method,
-//         url,
-//         headers: parsedHeaders,
-//         data,
-//       });
-//     } else {
-//       throw new Error(`Unsupported HTTP method: ${http_method}`);
-//     }
-//   } catch (err) {
-//     console.error(`Error sending data to destination ${url}:`, err.message);
-//   }
-// }
-
-// export default sendDataToDestination;
-
 import http from "http";
 import https from "https";
 import { URL } from "url";
