@@ -1,0 +1,315 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Data Forwarding API",
+    "version": "1.0.0",
+    "description": "API for managing accounts and forwarding data to destinations"
+  },
+  "paths": {
+    "/accounts": {
+      "post": {
+        "summary": "Create Account",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccountInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Account created"
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/accounts/{id}": {
+      "get": {
+        "summary": "Get Account by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account found"
+          },
+          "404": {
+            "description": "Account not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update Account",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccountInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Account updated"
+          },
+          "404": {
+            "description": "Account not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Account",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account deleted"
+          },
+          "404": {
+            "description": "Account not found"
+          }
+        }
+      }
+    },
+    "/accounts/{account_id}/destinations": {
+      "post": {
+        "summary": "Create Destination",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DestinationInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Destination created"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "404": {
+            "description": "Account not found"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get Destinations for Account",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of destinations"
+          }
+        }
+      }
+    },
+    "/accounts/{account_id}/destinations/{destination_id}": {
+      "put": {
+        "summary": "Update Destination",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "destination_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DestinationInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Destination updated"
+          },
+          "404": {
+            "description": "Destination not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Destination",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "destination_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Destination deleted"
+          },
+          "404": {
+            "description": "Destination not found"
+          }
+        }
+      }
+    },
+    "/accounts/{account_id}/forward": {
+      "post": {
+        "summary": "Forward data to all destinations",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Data forwarded"
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid token"
+          }
+        },
+        "security": [
+          {
+            "AppSecretToken": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AccountInput": {
+        "type": "object",
+        "required": ["email", "name"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "user@example.com"
+          },
+          "name": {
+            "type": "string",
+            "example": "My App"
+          }
+        }
+      },
+      "DestinationInput": {
+        "type": "object",
+        "required": ["url", "http_method", "headers"],
+        "properties": {
+          "url": {
+            "type": "string",
+            "example": "https://webhook.site/abc123"
+          },
+          "http_method": {
+            "type": "string",
+            "example": "POST"
+          },
+          "headers": {
+            "type": "object",
+            "example": {
+              "Authorization": "Bearer token"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "AppSecretToken": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-app-secret-token"
+      }
+    }
+  }
+}
